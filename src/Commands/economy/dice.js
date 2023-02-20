@@ -70,10 +70,10 @@ module.exports = {
 			const resBDice = resBot + resBot1;
 
 			let new_balance = 0;
-			if (resUDice > resBDice && resUser == resUser1) { embed.setDescription(`You got **${resUser}** and **${resUser1}**\nYourBestBot got **${resBot}** and **${resBot1}**\n\nWich means that you won! And since you rolled a double you won twice your bet. **${coins2}** coins!🎉`); new_balance = Math.floor(userData.balance + coins2); }
-			if (resUDice > resBDice) { embed.setDescription(`You got **${resUser}** and **${resUser1}**\nYourBestBot got **${resBot}** and **${resBot1}**\n\nWich means that you won! Here\'s your prize **${coins}** coins!🎉`); new_balance = Math.floor(userData.balance + coins); }
-			if (resUDice == resBDice) embed.setDescription(`You got **${resUser}** and **${resUser1}**\nYourBestBot got **${resBot}** and **${resBot1}**\n\nWich means that its a tie! Here goes your coins back ${Coins}`);
-			if (resUDice < resBDice) { embed.setDescription(`You got **${resUser}** and **${resUser1}**\nYourBestBot got **${resBot}** and **${resBot1}**\n\nWich means that you lost! You lost ${Coins} coins \:(`); new_balance = Math.floor(userData.balance - coins); };
+			if (resUDice > resBDice && resUser == resUser1) { embed.setDescription(`You got **${resUser}** and **${resUser1}**\nHyline got **${resBot}** and **${resBot1}**\n\nWich means that you won! And since you rolled a double you won twice your bet. **${coins2}** coins!🎉`); new_balance = Math.floor(userData.balance + coins2); }
+			if (resUDice > resBDice) { embed.setDescription(`You got **${resUser}** and **${resUser1}**\nHyline got **${resBot}** and **${resBot1}**\n\nWich means that you won! Here\'s your prize **${coins}** coins!🎉`); new_balance = Math.floor(userData.balance + coins); }
+			if (resUDice == resBDice) embed.setDescription(`You got **${resUser}** and **${resUser1}**\nHyline got **${resBot}** and **${resBot1}**\n\nWich means that its a tie! Here goes your coins back ${Coins}`);
+			if (resUDice < resBDice) { embed.setDescription(`You got **${resUser}** and **${resUser1}**\nHyline got **${resBot}** and **${resBot1}**\n\nWich means that you lost! You lost ${Coins} coins \:(`); new_balance = Math.floor(userData.balance - coins); };
 
 			if (userData.balance === 0) {
 				embed.setFooter({ text: `Imagine having no coins, what a loser.` });

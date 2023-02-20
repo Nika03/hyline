@@ -58,7 +58,7 @@ module.exports = {
 					new EmbedBuilder()
 						.setAuthor({ name: `Daily Claimed!` })
 						.setColor(resColor)
-						.setDescription(`YourBestBOT has given you **250 + ${streak_coins}** coins!`)
+						.setDescription(`Hyline has given you **250 + ${streak_coins}** coins!`)
 						.setFooter({ text: `You claimed daily for ${userData.daily_streak} days!`, })
 				],
 			});

@@ -21,7 +21,7 @@ module.exports = {
 
 		const serversEmbed = new EmbedBuilder()
 			.setTitle(
-				`Every server YourBestBot is in :)` // [${client.guilds.cache.size}]
+				`Every server ${client.user.username} is in :)` // [${client.guilds.cache.size}]
 			)
 			.setDescription(`In **${client.guilds.cache.size}** Servers!\nWith **${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)}** Users!\n\n${serverList}`)
 			.setFooter({ text: `Requested by ${interaction.user.username} on ` + interaction.guild.name, iconURL: interaction.guild.iconURL() })
