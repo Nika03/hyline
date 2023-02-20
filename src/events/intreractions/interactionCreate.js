@@ -38,7 +38,7 @@ module.exports = {
 						interaction.user.tag
 					}\nTimestamp: ${Date().slice(0, -42)}`.brightGreen
 				);
-				const channel = "964932900652986428"; // logs WEBEX
+				const channel = "1071628325761585252"; // logs bot-log nika
 				const check = client.channels.cache.get(channel);
 				if (check) {
 					const logEmbed = new EmbedBuilder()

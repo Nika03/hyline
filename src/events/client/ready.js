@@ -18,7 +18,7 @@ module.exports = {
 				status: "online",
 			}, {
 				type: ActivityType.Listening,
-				text: " /help | yourbestbot.pt/support",
+				text: " /help | Hyline.pt/support",
 				status: "online"
 			}, {
 				type: ActivityType.Watching,

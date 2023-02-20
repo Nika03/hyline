@@ -1,6 +1,5 @@
 const color = require("colors");
 const { EmbedBuilder, GuildMember } = require("discord.js");
-const Schema = require("../../schemas/welcome");
 
 module.exports = {
 	name: "guildMemberAdd",
@@ -17,31 +16,37 @@ module.exports = {
 
 		const { user, guild } = member;
 
-		let data = await Schema.findOne({
-			Guild: guild.id,
-		});
+		const regex = new RegExp(/^[a-z\s]*$/gi)
 
-		if (!data) return console.log(`\n${user.tag} joined in ${guild.name}\nerror in file: \"guildMemberAdd.js\"`); // this server hasnt setup the welcome command
-		let Channel = guild.channels.cache.get(data.Channel);
-		let MSG = data.MSG;
-		if (!MSG) MSG = "Welcome to the server.";
-		let Role = data.Role;
+		if ((regex.test(user.username) && user.username.match(/[-_?+*:]/g).length != user.username.length) == false) {
+			// the function that generates the numbers
+			const randomID = length => Math.floor(Math.random() * Math.pow(10, length));
+			// replace 3 with how many characters you want
+			randomID(3) // return example: 581
+			const newnick = randomID(5)
 
-		if (Role) {
-			member.roles.add(Role);
+			const reason = "Your nickname has been changed because it contains invalid characters"
+
+			const embed = new EmbedBuilder()
+				.setColor(resColor)
+				.setTitle(`Your nickname on \`${guild.name}\`has been changed!`)
+				.setDescription(`It has been change to: \`Moderated Nickname ${newnick}\`.\nReason: \`\`\`${reason}\`\`\``)
+				.setTimestamp()
+
+			try {
+				user.setNickname("Moderated Nickname " + newnick);
+			} catch (err) {
+				console.log(`I wasn't able to change the mebers nickname.`)
+			}
+			try {
+				user.send({
+					content: `${user}`,
+					embeds: [embed]
+				});
+			} catch (err) {
+				console.log(`I wasnt able to send the message to the user.`)
+			}
 		}
 
-		let welEmbed = new EmbedBuilder()
-			.setTitle(`${user.tag} joined.`)
-			.setColor(resColor)
-			.setDescription(MSG)
-			.setThumbnail(user.displayAvatarURL({
-				dynamic: true
-			}))
-			.setFooter({ text: `We are now a server with ${guild.memberCount} members \<3` })
-
-		console.log(`${user.tag} has joined ${data.GuildName}`.brightPurple);
-
-		Channel.send({ content: `<@${member.id}>`, embeds: [welEmbed], ephemeral: true });
 	}
 }

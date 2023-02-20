@@ -5,7 +5,7 @@ module.exports = {
 	developer: true,
 	data: new SlashCommandBuilder()
 		.setName("say")
-		.setDescription("Make YourBestBot say something.")
+		.setDescription("Make Hyline say something.")
 		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
 		.addStringOption((option) => option
 			.setName("channel")

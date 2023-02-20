@@ -5,7 +5,7 @@ module.exports = {
 	name: "beg",
 	data: new SlashCommandBuilder()
 		.setName('beg')
-		.setDescription('Beg YourBestBOT money, maybe you get something, or not.'),
+		.setDescription('Beg Hyline money, maybe you get something, or not.'),
 	async execute(interaction, client) {
 		try {
 
