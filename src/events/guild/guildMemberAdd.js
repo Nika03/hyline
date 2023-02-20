@@ -1,4 +1,3 @@
-const color = require("colors");
 const { EmbedBuilder, GuildMember } = require("discord.js");
 
 module.exports = {
@@ -17,22 +16,23 @@ module.exports = {
 		const { user, guild } = member;
 
 		const regex = new RegExp(/^[a-z\s]*$/gi)
+		const x = user.username.match(/[-_?+*:0-9]/g)
 
-		if ((regex.test(user.username) && user.username.match(/[-_?+*:]/g).length != user.username.length) == false) {
+		if (((x && x.length != user.username.length) && regex.test(user.username)) == false) {
 			// the function that generates the numbers
 			const randomID = length => Math.floor(Math.random() * Math.pow(10, length));
 			// replace 3 with how many characters you want
 			randomID(3) // return example: 581
 			const newnick = randomID(5)
-
+	
 			const reason = "Your nickname has been changed because it contains invalid characters"
-
+	
 			const embed = new EmbedBuilder()
 				.setColor(resColor)
 				.setTitle(`Your nickname on \`${guild.name}\`has been changed!`)
 				.setDescription(`It has been change to: \`Moderated Nickname ${newnick}\`.\nReason: \`\`\`${reason}\`\`\``)
 				.setTimestamp()
-
+	
 			try {
 				user.setNickname("Moderated Nickname " + newnick);
 			} catch (err) {
@@ -46,7 +46,10 @@ module.exports = {
 			} catch (err) {
 				console.log(`I wasnt able to send the message to the user.`)
 			}
+
 		}
+		//if ((regex.test(user.username) && user.username.match(/[-_?+*:0-9]/g)?.length != user.username.length) == false) {
+		//}
 
 	}
 }

@@ -1,4 +1,4 @@
-const { Message, MessageEmbed, Client } = require("discord.js");
+const { Message, Client } = require("discord.js");
 
 module.exports = {
 	name: "messageCreate",
